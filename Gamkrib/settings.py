@@ -184,8 +184,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/'
-LOGIN_URL = 'http://127.0.0.1:8000/users/login'
+LOGIN_REDIRECT_URL = 'https://gamkrib-29bf8.web.app'
+LOGIN_URL = 'http://gamkrib-29bf8.web.app/login'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
