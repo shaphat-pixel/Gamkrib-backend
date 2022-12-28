@@ -1,5 +1,6 @@
 
 import os
+import django_heroku
 from datetime import timedelta
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,13 +88,17 @@ WSGI_APPLICATION = 'Gamkrib.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dcjni9rlvmmove',
+        'USER': 'tbdyssuywgwaee',
+        'PASSWORD': 'dffe84edb5fccb58ad1910ddaeaa9c2e95f447cde2bf580b8d7df608157461a3',
+        'HOST': 'ec2-52-21-136-176.compute-1.amazonaws.com',
+        'PORT': '5432',
+
+        
     }
 }
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
@@ -215,12 +220,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+django_heroku.settings(locals())
+
 
 CORS_ALLOW_HEADERS = [
     "accept",
