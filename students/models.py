@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.conf import settings
 User = settings.AUTH_USER_MODEL
 from landlords.models import Listings
@@ -9,7 +10,7 @@ class Book(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     listing = models.ForeignKey(Listings, on_delete=models.CASCADE)
-    image = models.CharField(max_length=100, blank=True)
+    images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
@@ -20,7 +21,7 @@ class Book(models.Model):
     
     
     def save(self, *args, **kwargs):
-        self.image = self.listing.image
+        self.images = self.listing.images
         self.number_of_persons = self.listing.number_of_persons
         self.location = self.listing.location
         self.description = self.listing.description
@@ -39,7 +40,7 @@ class Bookings(models.Model):
     booking = models.OneToOneField(Book, on_delete=models.CASCADE)
 
     user = models.PositiveIntegerField(blank=True)
-    image = models.CharField(max_length=100, blank=True)
+    images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
@@ -51,7 +52,7 @@ class Bookings(models.Model):
 
     def save(self, *args, **kwargs):
         self.user = self.booking.user.id
-        self.image = self.booking.listing.image
+        self.images = self.booking.listing.image
         self.number_of_persons = self.booking.listing.number_of_persons
         self.location = self.booking.listing.location
         self.description = self.booking.listing.description

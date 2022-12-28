@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
@@ -8,7 +9,8 @@ User = settings.AUTH_USER_MODEL
 
 class Listings(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    image = models.CharField(max_length=100)
+    #image = models.CharField(max_length=100)
+    images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     description = models.TextField()
