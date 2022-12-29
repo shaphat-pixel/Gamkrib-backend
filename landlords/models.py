@@ -12,6 +12,8 @@ class Listings(models.Model):
     #image = models.CharField(max_length=100)
     images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100)
+    gender = models.CharField(max_length=100, null=True, blank=True)
+    map_link = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100)
     description = models.TextField()
     price = models.CharField(max_length=100)

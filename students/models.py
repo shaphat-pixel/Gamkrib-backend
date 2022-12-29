@@ -12,6 +12,8 @@ class Book(models.Model):
     listing = models.ForeignKey(Listings, on_delete=models.CASCADE)
     images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100, blank=True)
+    gender = models.CharField(max_length=100, null=True, blank=True)
+    map_link = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
     price = models.CharField(max_length=100, blank=True)
@@ -23,6 +25,8 @@ class Book(models.Model):
     def save(self, *args, **kwargs):
         self.images = self.listing.images
         self.number_of_persons = self.listing.number_of_persons
+        self.gender = self.listing.gender
+        self.map_link = self.listing.map_link
         self.location = self.listing.location
         self.description = self.listing.description
         self.price = self.listing.price
@@ -42,6 +46,8 @@ class Bookings(models.Model):
     user = models.PositiveIntegerField(blank=True)
     images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100, blank=True)
+    gender = models.CharField(max_length=100, null=True, blank=True)
+    map_link = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
     price = models.CharField(max_length=100, blank=True)
@@ -52,8 +58,10 @@ class Bookings(models.Model):
 
     def save(self, *args, **kwargs):
         self.user = self.booking.user.id
-        self.images = self.booking.listing.image
+        self.images = self.booking.listing.images
         self.number_of_persons = self.booking.listing.number_of_persons
+        self.gender = self.booking.listing.gender
+        self.map_link = self.booking.listing.map_link
         self.location = self.booking.listing.location
         self.description = self.booking.listing.description
         self.price = self.booking.listing.price
