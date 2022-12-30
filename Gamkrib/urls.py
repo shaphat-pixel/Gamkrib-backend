@@ -22,9 +22,12 @@ urlpatterns = [
    path('listings/<str:pk>', views.ListingsDetail, name = "listings-detail"),
    path('my-listings/<str:pk>', views.MyListings, name = "my-listings"),
 
+   path('slot-update/<str:pk>', views.SlotUpdate, name ='slot-update'),
+
 
    path('bookings/', student_views.BookList, name = "bookings"),
    path('book-create/', student_views.BookCreate, name = "book-create"),
+   
 
 
     path('my-bookings/<str:pk>', views.BookingsList, name = 'landlord-bookings-list'),

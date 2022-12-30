@@ -14,6 +14,7 @@ class Listings(models.Model):
     number_of_persons = models.CharField(max_length=100)
     gender = models.CharField(max_length=100, null=True, blank=True)
     map_link = models.CharField(max_length=500, null=True, blank=True)
+    slot = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100)
     description = models.TextField()
     price = models.CharField(max_length=100)

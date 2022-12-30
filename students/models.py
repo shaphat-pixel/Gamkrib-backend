@@ -14,6 +14,7 @@ class Book(models.Model):
     number_of_persons = models.CharField(max_length=100, blank=True)
     gender = models.CharField(max_length=100, null=True, blank=True)
     map_link = models.CharField(max_length=500, null=True, blank=True)
+    slot = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
     price = models.CharField(max_length=100, blank=True)
@@ -27,6 +28,7 @@ class Book(models.Model):
         self.number_of_persons = self.listing.number_of_persons
         self.gender = self.listing.gender
         self.map_link = self.listing.map_link
+        self.slot = self.listing.slot
         self.location = self.listing.location
         self.description = self.listing.description
         self.price = self.listing.price

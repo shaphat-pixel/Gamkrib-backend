@@ -63,6 +63,21 @@ def MyListings(request, pk):
 
 
 
+
+@api_view(['PUT'])
+def SlotUpdate(request, pk):
+    #permission_classes = [IsAuthenticated]
+    bookings = Listings.objects.get(id=pk)
+    if request.method == 'PUT':
+
+        serializer = ListingsSerializer(instance=bookings, data=request.data, many = False, partial=True)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
+
 @api_view(['GET'])
 def BookingsList(request, pk):
     permission_classes = [IsAuthenticated]
