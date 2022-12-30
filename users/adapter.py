@@ -20,9 +20,9 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         #LANDLORDS DETAILS
         user.location =data.get('location')
 
-        if user.is_landlord == True:
+        #if user.is_landlord == True:
            
-            user.is_active = False
+            #user.is_active = False
         
         user.save()
         return user
