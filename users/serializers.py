@@ -12,32 +12,30 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 
 class CustomRegisterSerializer(RegisterSerializer):
     phone_number = serializers.CharField(max_length=100)
+    firstName = serializers.CharField(max_length=100)
+    lastName = serializers.CharField(max_length=100)
+    gender = serializers.CharField(max_length=100, default="")
     school = serializers.CharField(max_length=100, default="")
-    department = serializers.CharField(max_length=100, default="")
-    school_id = serializers.CharField(max_length=100, default="")
-    course = serializers.CharField(max_length=100, default="")
     level = serializers.CharField(max_length=100, default="")
     
     is_landlord = serializers.BooleanField(default=False)
 
     #LANDLORDS DETAILS
-    ID_card = serializers.CharField(max_length=100, default="")
     location = serializers.CharField(max_length=100, default="")
 
     def get_cleaned_data(self):
         data_dict = super().get_cleaned_data()
         data_dict['phone_number'] = self.validated_data.get('phone_number', '')
+        data_dict['firstName'] = self.validated_data.get('firstName', '')
+        data_dict['lastName'] = self.validated_data.get('lastName', '')
+        data_dict['gender'] = self.validated_data.get('gender', '')
         data_dict['school'] = self.validated_data.get('school', '')
-        data_dict['school_id'] = self.validated_data.get('school_id', '')
         data_dict['level'] = self.validated_data.get('level', '')
-        data_dict['course'] = self.validated_data.get('course', '')
-        data_dict['department'] = self.validated_data.get('department', '')
         
         data_dict['is_landlord'] = self.validated_data.get('is_landlord', '')
         
         #LANDLORDS DETAILS
         data_dict['location'] = self.validated_data.get('location', '')
-        data_dict['ID_card'] = self.validated_data.get('ID_card', '')
 
         return data_dict
 
@@ -46,7 +44,7 @@ class CustomUserDetailsSerializer(UserDetailsSerializer):
 
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + \
-            ('phone_number','school', 'school_id', 'level', 'course', 'department', 'is_landlord','location', 'ID_card')
+            ('phone_number', 'firstName', 'lastName', 'gender', 'school',  'level', 'is_landlord','location', )
 
 
 

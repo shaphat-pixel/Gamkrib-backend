@@ -10,15 +10,14 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         user = super().save_user(request, user, form, commit)
         data = form.cleaned_data
         user.phone_number = data.get('phone_number')
+        user.firstName = data.get('firstName')
+        user.lastName = data.get('lastName')
+        user.gender = data.get('gender')
         user.school = data.get('school')
-        user.department = data.get('department')
         user.level = data.get('level')
-        user.school_id = data.get('school_id')
-        user.course = data.get('course')
         user.is_landlord =data.get('is_landlord')
 
         #LANDLORDS DETAILS
-        user.ID_card =data.get('ID_card')
         user.location =data.get('location')
 
         if user.is_landlord == True:
