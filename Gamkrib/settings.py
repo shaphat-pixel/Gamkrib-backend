@@ -199,8 +199,8 @@ LOGIN_URL = 'https://gamkrib.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'khalshaphat@gmail.com'
-EMAIL_HOST_PASSWORD = 'faenjvkrbtosvmns'
+EMAIL_HOST_USER = 'gamkrib.com@gmail.com'
+EMAIL_HOST_PASSWORD = 'rhyjxdihbskluely'
 EMAIL_PORT = 587
 
 # Internationalization
