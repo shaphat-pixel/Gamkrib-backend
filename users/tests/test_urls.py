@@ -1,7 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from users.views import *
-
+from users.views import ProfileView
 
 
 class TestUrls(SimpleTestCase):
