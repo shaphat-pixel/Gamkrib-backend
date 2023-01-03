@@ -14,6 +14,7 @@ class Book(models.Model):
     number_of_persons = models.CharField(max_length=100, blank=True)
     gender = models.CharField(max_length=100, null=True, blank=True)
     map_link = models.CharField(max_length=500, null=True, blank=True)
+    property_type = models.CharField(max_length=100, null=True, blank=True)
     slot = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
@@ -27,6 +28,7 @@ class Book(models.Model):
         self.images = self.listing.images
         self.number_of_persons = self.listing.number_of_persons
         self.gender = self.listing.gender
+        self.property_type = self.listing.property_type
         self.map_link = self.listing.map_link
         self.slot = self.listing.slot
         self.location = self.listing.location
@@ -49,6 +51,7 @@ class Bookings(models.Model):
     images = ArrayField(models.CharField(max_length=1000), blank=True)
     number_of_persons = models.CharField(max_length=100, blank=True)
     gender = models.CharField(max_length=100, null=True, blank=True)
+    property_type = models.CharField(max_length=100, null=True, blank=True)
     map_link = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
@@ -63,6 +66,7 @@ class Bookings(models.Model):
         self.images = self.booking.listing.images
         self.number_of_persons = self.booking.listing.number_of_persons
         self.gender = self.booking.listing.gender
+        self.property_type = self.booking.listing.property_type
         self.map_link = self.booking.listing.map_link
         self.location = self.booking.listing.location
         self.description = self.booking.listing.description
