@@ -7,7 +7,7 @@ from . import views
 
 
 urlpatterns = [
-	path('account-confirm-email/<str:key>/', ConfirmEmailView.as_view()),
+	path('account-confirm-email/<str:key>/', ConfirmEmailView.as_view(), name='account_confirm_email'),
     path('register/', RegisterView.as_view()),
     path('login/', LoginView.as_view()),
     path('logout/', LogoutView.as_view()),
