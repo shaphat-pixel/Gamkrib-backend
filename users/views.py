@@ -23,3 +23,8 @@ def ProfileView(request):
     serializer = UserProfileSerializer(profile, many=True)
 
     return Response(serializer.data)
+
+
+def EmailView(request):
+    
+    return render(request, 'users/email_confirm.html')
