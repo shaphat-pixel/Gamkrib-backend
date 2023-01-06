@@ -20,9 +20,13 @@ class Listings(models.Model):
     description = models.TextField()
     price = models.CharField(max_length=100)
 
-    time_to_upsa_walk = models.CharField(max_length=300, null=True, blank=True)
+    time_to_upsa_walk = models.CharField(max_length=300, null=True, blank=True) 
     time_to_upsa_bike = models.CharField(max_length=300, null=True, blank=True)
     time_to_upsa_car = models.CharField(max_length=300, null=True, blank=True)
+
+    time_to_ug_walk = models.CharField(max_length=300, null=True, blank=True) 
+    time_to_ug_bike = models.CharField(max_length=300, null=True, blank=True)
+    time_to_ug_car = models.CharField(max_length=300, null=True, blank=True)
 
     time_to_radford_walk = models.CharField(max_length=300, null=True, blank=True)
     time_to_radford_bike = models.CharField(max_length=300, null=True, blank=True)
